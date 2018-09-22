@@ -1,12 +1,11 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
     <div class="container-fluid">
       <div class="row">
-        <form action="{{ route('reporte') }}" method="post">
+        <form action="<?php echo e(route('reporte')); ?>" method="post">
 
-          {{ csrf_field() }}
+          <?php echo e(csrf_field()); ?>
+
           <div class="col-md-8 col-md-offset-3">
 
             <div class="form-group col-md-4">
@@ -24,9 +23,9 @@
           <div class="form-group col-md-4 col-md-offset-4">
             <select class="form-control" name="colaborador">
               <option value="0">--SELECCIONE UN COLABORADOR--</option>
-              @foreach($colaboradors as $colaborador)
-              <option value="{{ $colaborador->id }}">{{ $colaborador->name }}</option>
-              @endforeach
+              <?php $__currentLoopData = $colaboradors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $colaborador): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <option value="<?php echo e($colaborador->id); ?>"><?php echo e($colaborador->name); ?></option>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </select>
           </div>
 
@@ -38,4 +37,6 @@
       </div>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

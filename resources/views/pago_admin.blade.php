@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>Balance de {{ auth()->user()->name }} <small class="pull-right"><u>Nota:</u> En este momento no se esta sumando la cantidad con la que se incia el dia.</a></small></h4></div>
+  <div class="panel-heading"><h4>Balance de {{ auth()->user()->name }}</h4></div>
 
   <div class="panel-body">
     <div class="table-responsive">
@@ -20,9 +20,9 @@
         @foreach ($user as $pagos)
         <tr>
           <td>{{ $pagos->usuario }}</td>
-          <td>{{ $pagos->recaudado }}  ./s</td>
-          <td>{{ $pagos->recaudado - $pagos->pago_empleado }}  ./s</td>
-          <td>{{ $pagos->pago_empleado }} ./s</td>
+          <td>{{ number_format($pagos->recaudado, 2) }}  ./s</td>
+          <td>{{ number_format($pagos->recaudado - $pagos->pago_empleado, 2) }}  ./s</td>
+          <td>{{ number_format($pagos->pago_empleado, 2) }} ./s</td>
         </tr>
         @endforeach
       </tbody>
@@ -45,6 +45,7 @@
           <th>Abonó</th>
           <th>Fecha</th>
           <th>Atendido por:</th>
+          <th>Accion</th>
         </tr>
       </thead>
       <tbody>
@@ -55,16 +56,20 @@
           <td>{{ $recaudos->abono }}  ./s</td>
           <td>{{ $recaudos->created_at }}</td>
           <td>{{ $recaudos->usuario }}</td>
+          <td>
+            <form class="" action="{{ route('eliminarcontrol.destroy',$recaudos->id) }}" method="post">
+              {{ csrf_field() }}
+              {{ method_field('DELETE') }}
+              <input type="submit" class="btn btn-xs btn-danger" value="Eliminr">
+            </form>
+          </td>
         </tr>
         @endforeach
       </tbody>
     </table>
     </div>
-
   </div>
   <div class="panel-footer">
   </div>
-
-
 </div>
 @endsection

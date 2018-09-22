@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="container-fluid">
     <div class="row">
         <div id="sombra" class="col-md-12">
@@ -8,8 +6,9 @@
                 <div class="panel-heading"><h4>Nuevo Cliente</h4></div>
 
                 <div class="panel-body">
-                  <form action="{{ route('cliente.store') }}" method="post">
-                    {{ csrf_field() }}
+                  <form action="<?php echo e(route('cliente.store')); ?>" method="post">
+                    <?php echo e(csrf_field()); ?>
+
                     <div class="form-group">
                       <div class="form-group col-md-6">
                         <label for="nombre">Nombre</label>
@@ -28,7 +27,7 @@
 
                       <div class="form-group col-md-6">
                         <label for="fecha">Fecha</label>
-                        <input type="date" class="form-control" name="fecha" value="{{ date('Y-m-d') }}" id="fecha">
+                        <input type="date" class="form-control" name="fecha" value="<?php echo e(date('Y-m-d')); ?>" id="fecha">
                       </div>
 
                       <div class="form-group col-md-6">
@@ -66,8 +65,8 @@
                     <div class="form-group col-md-12">
                       <input type="submit" class="btn btn-success btn-block" value="Guardar">
                     </div>
-                    <input type="hidden" name="agregado" value="{{ auth()->user()->name }}">
-                    <input type="hidden" name="agregado_id" value="{{ auth()->user()->id }}">
+                    <input type="hidden" name="agregado" value="<?php echo e(auth()->user()->name); ?>">
+                    <input type="hidden" name="agregado_id" value="<?php echo e(auth()->user()->id); ?>">
                     <input type="hidden" name="abono_id" value="0">
                   </form>
                 </div>
@@ -79,7 +78,7 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 <script type="text/javascript">
 
 function calcular(){
@@ -103,3 +102,5 @@ function pago_por_dia(){
   document.getElementById("totaldias").value = total_dias.toFixed(2);
 };
 </script>
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

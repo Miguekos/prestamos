@@ -61,11 +61,15 @@
                         <input type="number" step="any" class="form-control" readonly id="totaldias" name="pago_dia" value="{{ $cliente->pago_dia }}" placeholder="">
                       </div>
 
+                      <div class="form-group col-md-6">
+                        <label for="">Deuda</label>
+                        <input type="number" step="any" class="form-control" name="deuda" value="{{ $cliente->deuda }}" placeholder="">
+                      </div>
+
                     </div>
                     <div class="form-group col-md-12">
                       <input type="submit" class="btn btn-success btn-block" value="Guardar">
                     </div>
-                    <input type="hidden" name="agregado" value="{{ auth()->user()->name }}">
                   </form>
                 </div>
 

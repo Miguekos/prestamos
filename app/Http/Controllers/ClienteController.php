@@ -55,7 +55,9 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         $cliente = Cliente::create($request->all());
-        return redirect()->route('cliente.index')->with('flash','Se guardo correctammente el cliente');
+        // $flight = Cliente::find($control);
+        // $flight->deuda = $flight->deuda + $cliente->abono;
+        return redirect()->route('cliente.index')->with('success','Se guardo correctammente el cliente');
         //return $request->all();
     }
 

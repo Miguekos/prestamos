@@ -16,9 +16,9 @@
                     <strong>Rol:</strong> {{ $rol }}<br>
                     <strong>Empleados:</strong> {{ $total_u }}<br>
                     <strong>Clientes:</strong> {{ $total_c }}<br>
-                    <strong>Total Recaudado:</strong> {{ $total_r }} ./S<br>
-                    <strong>Total Deudas Por Cobrar:</strong> {{ $total_d }} ./S<br>
-                    <strong class="alert-danger">Clientes con deuda:</strong> {{ $total_dt }}<br>
+                    <strong>Total Recaudado:</strong> {{ number_format($total_r, 2) }} ./S<br>
+                    <strong>Total Deudas Por Cobrar:</strong> {{ number_format($total_d, 2) }} ./S<br>
+                    <strong class="alert-danger">Clientes con deuda:</strong> {{ number_format($total_dt, 2) }}<br>
                 </div>
                 <div class="panel-footer">
                     <small>miguekos1233@gmail.com</small>

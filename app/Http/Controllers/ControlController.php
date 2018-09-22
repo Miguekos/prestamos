@@ -128,7 +128,8 @@ class ControlController extends Controller
     {
 
         Cliente::where('abono_id', 1)
-          ->update(['abono_id' => 0]);
+            ->where('agregado_id',auth()->user()->id)
+            ->update(['abono_id' => 0]);
      
         return back()->with('success','Se resetearon los depositos correctamente..!!');
     }

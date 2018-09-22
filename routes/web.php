@@ -14,6 +14,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register')->name('register');
 
+Route::get('pendiente', 'DashboardController@pendiente')->name('pendiente');
 
 //Usuarios
 Route::resource('user','UserController');
@@ -23,6 +24,9 @@ Route::resource('cliente','ClienteController');
 Route::resource('control','ControlController');
 Route::resource('pago','PagoController');
 Route::resource('report','ReportController');
+
+Route::delete('eliminarcontrol/{monto}', 'DashboardController@eliminarcontrol')->name('eliminarcontrol.destroy');
+
 
 //Limpiar los clientes que ya depositaron
 Route::patch('limpiar_cliente', 'ControlController@limpiar_cliente')->name('limpiar_cliente');

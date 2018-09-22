@@ -14,7 +14,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
 
-            @if(auth()->user()->user_id == 1)
+            <?php if(auth()->user()->user_id == 1): ?>
                 <li class=""><a href="/cliente">Clientes <span class="sr-only">(current)</span></a></li>
                 <li class=""><a href="/pago_admin">Control <span class="sr-only">(current)</span></a></li>
                 <!-- <li class=""><a href="/control_admin">Control <span class="sr-only">(current)</span></a></li> -->
@@ -23,45 +23,30 @@
                 <!-- <li><a href="#">Barberias</a></li> -->
                 <li><a href="/user">Colaborador</a></li>
                 <!-- <li class=""><a href="/nomina">Cierre de Caja <span class="sr-only">(current)</span></a></li> -->
-            @else
+            <?php else: ?>
                 <li class=""><a href="/cliente">Clientes <span class="sr-only">(current)</span></a></li>
                 <li class=""><a href="/control">Pagos <span class="sr-only">(current)</span></a></li>
                 <li class=""><a href="/pago">Control <span class="sr-only">(current)</span></a></li>
                 <li class=""><a href="/cierre">Contabilidad <span class="sr-only">(current)</span></a></li>
-            @endif
+            <?php endif; ?>
 
-            {{--<li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-            </li>--}}
+            
         </ul>
-        {{--<form class="navbar-form navbar-left">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>--}}
+        
         <ul class="nav navbar-nav navbar-right">
-          @if(auth()->user()->user_id == 2)
+          <?php if(auth()->user()->user_id == 2): ?>
             <li><a href="#"></a></li>
-          @else
-          @endif
+          <?php else: ?>
+          <?php endif; ?>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ auth()->user()->name  }} <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo e(auth()->user()->name); ?> <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="/cambioclaveform">Cambiar Contraseña</a></li>
               <li role="separator" class="divider"></li>
               <li class="text-center">
-                <form action="{{ route('logout') }}" method="POST">
-                  {{ csrf_field() }}
+                <form action="<?php echo e(route('logout')); ?>" method="POST">
+                  <?php echo e(csrf_field()); ?>
+
                   <button class="btn btn-default">Salir</button>
                 </form>
               </li>

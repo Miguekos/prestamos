@@ -3,7 +3,6 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-
         <div id="sombra" class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading"><h4>Clientes <a class="pull-right btn btn-sm btn-success" href="{{ url('/cliente/create') }}">Nuevo Cliente</a></h4></div>
@@ -29,7 +28,7 @@
                         <td>{{ $clientes->nombre }}</td>
                         <td>{{ $clientes->telf }}</td>
                         <td>{{ $clientes->dni }}</td>
-                        <td>{{ $clientes->deuda }}</td>
+                        <td>{{ number_format($clientes->deuda, 2) }}</td>
                         <td>{{ $clientes->agregado }}</td>
                         <td>{{ $clientes->fecha }}</td>
                         <td width="20%">
