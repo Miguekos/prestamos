@@ -27,6 +27,7 @@ Route::resource('report','ReportController');
 
 Route::delete('eliminarcontrol/{monto}', 'DashboardController@eliminarcontrol')->name('eliminarcontrol.destroy');
 
+Route::get('limpiarClientes', 'ClienteController@limpiarClientes')->name('limpiarClientes');
 
 //Limpiar los clientes que ya depositaron
 Route::patch('limpiar_cliente', 'ControlController@limpiar_cliente')->name('limpiar_cliente');

@@ -28,8 +28,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $cliente = Cliente::all();
-        return view('clientes.index',compact('cliente'));
+        $cliente = Cliente::where('deuda','!=',0.00)->get();
+        $clientesd = Cliente::where('deuda',0.00)->get();
+        return view('clientes.index',compact('cliente','clientesd'));
     }
 
     /**
@@ -115,5 +116,15 @@ class ClienteController extends Controller
         $cliente->delete();
         return redirect()->route('cliente.index')->with('flash','Se elimino el cliente correctamente..!!');
 
+    }
+
+    public function limpiarClientes()
+    {
+      $clientesd = Cliente::where('deuda',0.00)->get();
+      foreach ( $clientesd as $clientesds){
+        $id = $clientesds->id;
+        Cliente::destroy($id);
+      }
+      return redirect()->route('cliente.index')->with('flash','Se elimino el cliente correctamente..!!');
     }
 }
