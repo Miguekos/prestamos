@@ -57,7 +57,7 @@
         </div>
     </div>
 </div>
-
+@if(auth()->user()->user_id == 1)
 <div class="container-fluid">
     <div class="row">
         <div id="sombra" class="col-md-12">
@@ -114,4 +114,6 @@
         </div>
     </div>
 </div>
+@else
+@endif
 @endsection

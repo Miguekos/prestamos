@@ -1,7 +1,7 @@
 <?php $__env->startSection('content'); ?>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>Balance de <?php echo e(auth()->user()->name); ?> <small class="pull-right"><u>Nota:</u> En este momento no se esta sumando la cantidad con la que se incia el dia.</a></small></h4></div>
+  <div class="panel-heading"><h4>Balance de <?php echo e(auth()->user()->name); ?></h4></div>
 
   <div class="panel-body">
     <div class="table-responsive">
@@ -18,9 +18,9 @@
         <?php $__currentLoopData = $user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pagos): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <tr>
           <td><?php echo e($pagos->usuario); ?></td>
-          <td><?php echo e($pagos->recaudado); ?>  ./s</td>
-          <td><?php echo e($pagos->recaudado - $pagos->pago_empleado); ?>  ./s</td>
-          <td><?php echo e($pagos->pago_empleado); ?> ./s</td>
+          <td><?php echo e(number_format($pagos->recaudado, 2)); ?>  ./s</td>
+          <td><?php echo e(number_format($pagos->recaudado - $pagos->pago_empleado, 2)); ?>  ./s</td>
+          <td><?php echo e(number_format($pagos->pago_empleado, 2)); ?> ./s</td>
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </tbody>
@@ -43,6 +43,7 @@
           <th>Abonó</th>
           <th>Fecha</th>
           <th>Atendido por:</th>
+          <th>Accion</th>
         </tr>
       </thead>
       <tbody>
@@ -53,6 +54,15 @@
           <td><?php echo e($recaudos->abono); ?>  ./s</td>
           <td><?php echo e($recaudos->created_at); ?></td>
           <td><?php echo e($recaudos->usuario); ?></td>
+            <td>
+            <form class="" action="<?php echo e(route('eliminarcontrol.destroy',$recaudos->id)); ?>" method="post">
+              <?php echo e(csrf_field()); ?>
+
+              <?php echo e(method_field('DELETE')); ?>
+
+              <input type="submit" class="btn btn-xs btn-danger" value="Eliminr">
+            </form>
+          </td>
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </tbody>

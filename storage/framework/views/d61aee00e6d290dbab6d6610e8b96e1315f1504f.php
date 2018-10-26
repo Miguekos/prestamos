@@ -61,11 +61,15 @@
                         <input type="number" step="any" class="form-control" readonly id="totaldias" name="pago_dia" value="<?php echo e($cliente->pago_dia); ?>" placeholder="">
                       </div>
 
+                      <div class="form-group col-md-6">
+                        <label for="">Deuda</label>
+                        <input type="number" step="any" class="form-control" name="deuda" value="<?php echo e($cliente->deuda); ?>" placeholder="">
+                      </div>
+
                     </div>
                     <div class="form-group col-md-12">
                       <input type="submit" class="btn btn-success btn-block" value="Guardar">
                     </div>
-                    <input type="hidden" name="agregado" value="<?php echo e(auth()->user()->name); ?>">
                   </form>
                 </div>
 

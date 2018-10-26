@@ -27,7 +27,6 @@ class CreateClientesTable extends Migration
             $table->float('dias_para_pagar')->nullable();
             $table->float('pago_dia')->nullable();
             $table->datetime('fecha_limite')->nullable();
-            $table->integer('abono_id');
             $table->text('comentario')->nullable();
             $table->text('agregado')->nullable();
             $table->text('agregado_id')->nullable();

@@ -11,11 +11,9 @@
     <title>Prestamos | Inicio</title>
 
     <!-- Styles -->
-
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-
 
 </head>
 <style>

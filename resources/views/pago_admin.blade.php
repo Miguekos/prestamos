@@ -56,7 +56,7 @@
           <td>{{ $recaudos->abono }}  ./s</td>
           <td>{{ $recaudos->created_at }}</td>
           <td>{{ $recaudos->usuario }}</td>
-          <td>
+            <td>
             <form class="" action="{{ route('eliminarcontrol.destroy',$recaudos->id) }}" method="post">
               {{ csrf_field() }}
               {{ method_field('DELETE') }}
@@ -68,8 +68,11 @@
       </tbody>
     </table>
     </div>
+
   </div>
   <div class="panel-footer">
   </div>
+
+
 </div>
 @endsection

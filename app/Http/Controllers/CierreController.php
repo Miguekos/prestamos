@@ -68,7 +68,7 @@ class CierreController extends Controller
 
 
         $reporte = Report::where('usuario_id',auth()->user()->id)->get();
-
+        
 
           return view('cierre.index',compact('inicio','inicio_suma','fin','fin_resta','recaudado','ganancia','entregar','reporte','recaudado_t'));
     }

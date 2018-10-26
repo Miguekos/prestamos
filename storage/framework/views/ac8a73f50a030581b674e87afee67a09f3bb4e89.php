@@ -64,6 +64,7 @@
                         </td>
                         <td>%</td>
                         <td class="alert-danger">Deuda</td>
+                        <td>Accion</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -75,6 +76,15 @@
                         <td><?php echo e($abono->monto_a_apagar . " S/."); ?></td>
                         <td><?php echo e($abono->interes); ?></td>
                         <td><?php echo e($abono->deuda . " S/."); ?></td>
+                        <td>
+                          <form action="<?php echo e(route('control.destroy',$abono->id)); ?>" method="post">
+                          <?php echo e(csrf_field()); ?>
+
+                          <?php echo e(method_field('DELETE')); ?>
+
+                                <input type="submit" class="btn btn-sm btn-danger" value="Eliminar">
+                          </form>
+                        </td>
                       </tr>
                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
@@ -88,6 +98,15 @@
         </div>
     </div>
 </div>
+<hr>
+<form action="<?php echo e(route('limpiar_cliente')); ?>" method="POST">
+  <?php echo e(csrf_field()); ?>
+
+  <?php echo e(method_field('PATCH')); ?>
+
+  <input type="submit" class="btn btn-success btn-block" value="Reinicar Abonos">
+</form>
+<hr>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

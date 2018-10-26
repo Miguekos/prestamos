@@ -67,6 +67,7 @@
                     </div>
                     <input type="hidden" name="agregado" value="<?php echo e(auth()->user()->name); ?>">
                     <input type="hidden" name="agregado_id" value="<?php echo e(auth()->user()->id); ?>">
+                    <input type="hidden" name="abono_id" value="0">
                   </form>
                 </div>
 

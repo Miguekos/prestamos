@@ -7,7 +7,6 @@ use App\Nomina;
 use App\Cliente;
 use App\Cierre;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PagoController extends Controller
 {
@@ -78,61 +77,53 @@ class PagoController extends Controller
     public function store(Request $request)
     {
 
-        // return $request->all();
-        $idc = $request->cliente_id;
-        $idl = Pago::limit(1)->orderBy('id', 'desc')->get();
-        if ($idc == $idl) {
-          return redirect()->route('control.index');
+      // return $request->all();
 
-          // return back()->with('flash', 'EL abono ya se realizo..!!');
-        }else{
+        $now = new DateTime('America/Lima');
+        // $hora = $now->format('d-M-Y H:i:s');
+        $hora = $now->format('y/m/d');
 
-          $now = new DateTime('America/Lima');
 
-          $hora = $now->format('y/m/d');
-          //variables
-          $abono = $request->abono;
-          $deuda = $request->deuda;
-          $nueva_deuda = $deuda - $abono;
+      //variables
+      $abono = $request->abono;
+      $deuda = $request->deuda;
+      $nueva_deuda = $deuda - $abono;
 
-          $porcen = auth()->user()->porcent_id;
+      $porcen = auth()->user()->porcent_id;
 
-          // return $request->all();
-          //Actualizar valor en tabla cliente
+      // return $request->all();
+      //Actualizar valor en tabla cliente
 
-          $flight = Cliente::find($request->cliente_id);
-          $flight->deuda = $nueva_deuda;
-          $flight->abono_id = 1;
-          $flight->save();
+      $flight = Cliente::find($request->cliente_id);
+      $flight->deuda = $nueva_deuda;
+      $flight->abono_id = 1;
+      $flight->save();
 
-          $pago = Pago::create([
-            'nombre' => $request->nombre,
-            'cliente_id' => $request->cliente_id,
-            'deuda' => $nueva_deuda,
-            'prestamo' => $request->prestamo,
-            'abono' => $request->abono,
-            'fecha' => $request->fecha,
-            'fechaN' => $request->fecha,
-            'a_caja' => $request->a_caja,
-            'user_id' => $request->user_id,
-            'usuario' => $request->usuario,
-          ]);
+      $pago = Pago::create([
+        'nombre' => $request->nombre,
+        'cliente_id' => $request->cliente_id,
+        'deuda' => $nueva_deuda,
+        'prestamo' => $request->prestamo,
+        'abono' => $request->abono,
+        'fecha' => $request->fecha,
+        'a_caja' => $request->a_caja,
+        'user_id' => $request->user_id,
+        'usuario' => $request->usuario,
+      ]);
 
-          // echo $pago;
+      // echo $pago;
 
-          $porcenta = $porcen / 100;
-          $ganancia_em = $porcenta * $request->abono;
+      $porcenta = $porcen / 100;
+      $ganancia_em = $porcenta * $request->abono;
 
-          $nomina = Nomina::create([
-            'usuario' => $request->usuario,
-            'user_id_nomina' => $request->user_id,
-            'abono_recaudado' => $request->abono,
-            'pago_empleado' => $ganancia_em,
-          ]);
+      $nomina = Nomina::create([
+        'usuario' => $request->usuario,
+        'user_id_nomina' => $request->user_id,
+        'abono_recaudado' => $request->abono,
+        'pago_empleado' => $ganancia_em,
+      ]);
 
-          return redirect()->route('control.index');
-
-        }
+      return redirect()->route('control.index');
 
       //agregar registro para el control de usuarios
       // $pago = Pago::create($request->all());

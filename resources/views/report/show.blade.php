@@ -4,21 +4,24 @@
 
     <div class="container-fluid">
       <div class="row">
-<h1 style="color: white;" class="text-center panel-heading">Resultados de la fecha {{ $inicio }} a la fecha {{ $fin }}</h1>
+    <h1 style="color: white;" class="text-center panel-heading">Resultados de la fecha {{ $inicio }} a la fecha {{ $fin }}</h1>
         <div class="col-md-8 col-md-offset-3">
           <br>
           <div class="form-group col-md-4">
-            <label>Total deudas de clientes</label>
+            <label style="color: white;">Total deudas de clientes</label>
              <input class="form-control" type="text" readonly value="{{ number_format($deuda, 2) }}">
           </div>
 
           <div class="form-group col-md-4">
-            <label>Total Prestamos a clientes</label>
+            <label style="color: white;">Total Prestamos a clientes</label>
              <input class="form-control" type="text" readonly value="{{ number_format($prestado, 2) }}">
           </div>
         </div>
+        </div>
+        
 
         <div class="panel panel-body">
+        <div class="table-responsive">
           <table id="example" class="table">
             <thead>
               <tr>
@@ -47,17 +50,17 @@
               @endforeach
             </tbody>
           </table>
-        </div>
-
-
+          
+        
       </div>
     </div>
 
 
     <div class="container-fluid">
       <div class="row">
-<h1 style="color: white;" class="text-center panel-heading">Depositos y Retiros de: {{ $inicio }} hasta {{ $fin }}</h1>
+    <h1 style="color: white;" class="text-center panel-heading">Depositos y Retiros de: {{ $inicio }} hasta {{ $fin }}</h1>
         <div class="panel panel-body">
+        <div class="table-responsive">
           <table id="example2" class="table">
             <thead>
               <tr>
@@ -80,6 +83,7 @@
               @endforeach
             </tbody>
           </table>
+          </div>
         </div>
 
 

@@ -2,8 +2,24 @@
 
     <div class="container-fluid">
       <div class="row">
-<h1 style="color: white;" class="text-center panel-heading">Resultados de la fecha <?php echo e($inicio); ?> a la fecha <?php echo e($fin); ?></h1>
+    <h1 style="color: white;" class="text-center panel-heading">Resultados de la fecha <?php echo e($inicio); ?> a la fecha <?php echo e($fin); ?></h1>
+        <div class="col-md-8 col-md-offset-3">
+          <br>
+          <div class="form-group col-md-4">
+            <label style="color: white;">Total deudas de clientes</label>
+             <input class="form-control" type="text" readonly value="<?php echo e(number_format($deuda, 2)); ?>">
+          </div>
+
+          <div class="form-group col-md-4">
+            <label style="color: white;">Total Prestamos a clientes</label>
+             <input class="form-control" type="text" readonly value="<?php echo e(number_format($prestado, 2)); ?>">
+          </div>
+        </div>
+        </div>
+        
+
         <div class="panel panel-body">
+        <div class="table-responsive">
           <table id="example" class="table">
             <thead>
               <tr>
@@ -32,17 +48,17 @@
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
           </table>
-        </div>
-
-
+          
+        
       </div>
     </div>
-    
-    
+
+
     <div class="container-fluid">
       <div class="row">
-<h1 style="color: white;" class="text-center panel-heading">Depositos y Retiros de: <?php echo e($inicio); ?> hasta <?php echo e($fin); ?></h1>
+    <h1 style="color: white;" class="text-center panel-heading">Depositos y Retiros de: <?php echo e($inicio); ?> hasta <?php echo e($fin); ?></h1>
         <div class="panel panel-body">
+        <div class="table-responsive">
           <table id="example2" class="table">
             <thead>
               <tr>
@@ -65,6 +81,7 @@
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
           </table>
+          </div>
         </div>
 
 

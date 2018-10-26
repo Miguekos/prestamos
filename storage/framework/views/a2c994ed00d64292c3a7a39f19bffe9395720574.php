@@ -4,7 +4,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="myModal<?php echo e($clientes->id); ?>" role="dialog">
-        <form id="update" action="<?php echo e(route('pago.store')); ?>" method="post">
+        <form action="<?php echo e(route('pago.store')); ?>" method="post">
             <?php echo e(csrf_field()); ?>
 
         <div class="modal-dialog">
@@ -26,15 +26,16 @@
                     <input type="text" class="form-control" required name="abono" id="abono">
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="fecha">Fecha</label><?php echo e($hora); ?>
-
+                    <label for="fecha">Fecha</label>
                     <input type="text" class="form-control" name="fecha" value="<?php echo e($hora); ?>" id="fecha">
                   </div>
                   <div class="form-group col-md-6">
                     <label for="a_caja">A Caja</label>
                     <select class="form-control" name="a_caja">
                       <option value="Si">Si</option>
+                      <?php if(auth()->user()->user_id == 1): ?>
                       <option value="No">No</option>
+                      <?php endif; ?>
                     </select>
                   </div>
                 </div>
@@ -46,8 +47,8 @@
                 <hr>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" id="update" class="btn btn-default">Guardar</button>
+                    <button type="button" class="btn btn-default" id="cerrar" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" id="guardar" class="btn btn-default">Guardar</button>
                 </div>
                 <input type="hidden" name="user_id" value="<?php echo e(auth()->user()->id); ?>">
                 <input type="hidden" name="usuario" value="<?php echo e(auth()->user()->name); ?>">

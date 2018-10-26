@@ -20,6 +20,15 @@
 
           </div>
 
+          <div class="form-group col-md-4 col-md-offset-4">
+            <select class="form-control" name="colaborador">
+              <option value="0">--SELECCIONE UN COLABORADOR--</option>
+              <?php $__currentLoopData = $colaboradors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $colaborador): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <option value="<?php echo e($colaborador->id); ?>"><?php echo e($colaborador->name); ?></option>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </select>
+          </div>
+
             <div class="form-group col-md-4 col-md-offset-4">
               <input type="submit" class="btn btn-info btn-block" value="Buscar">
             </div>

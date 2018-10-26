@@ -19,6 +19,7 @@
                 <li class=""><a href="/pago_admin">Control <span class="sr-only">(current)</span></a></li>
                 <!-- <li class=""><a href="/control_admin">Control <span class="sr-only">(current)</span></a></li> -->
                 <li class=""><a href="/report">Reportes <span class="sr-only">(current)</span></a></li>
+                <li class=""><a href="/pendiente">Pendientes <span class="sr-only">(current)</span></a></li>
                 <!-- <li><a href="#">Barberias</a></li> -->
                 <li><a href="/user">Colaborador</a></li>
                 <!-- <li class=""><a href="/nomina">Cierre de Caja <span class="sr-only">(current)</span></a></li> -->
